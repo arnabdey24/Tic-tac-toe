@@ -2,6 +2,7 @@ package com.example.tic_tac_toe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,10 +14,15 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    MediaPlayer chalkSound,gameSound;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        chalkSound= MediaPlayer.create(this,R.raw.chalksound);
+        gameSound= MediaPlayer.create(this,R.raw.gamesound);
     }
 
     int user=0;
@@ -27,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void popClick(View view){
+
+        chalkSound.start();
+
         ImageView imageView=(ImageView) view;
         int index=Integer.parseInt(view.getTag().toString());
         Log.i("pressed",String.valueOf(index));
@@ -53,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
                 if (value[winingPosition[0]] == value[winingPosition[1]] &&
                         value[winingPosition[1]] == value[winingPosition[2]] &&
                         value[winingPosition[0]] != 2) {
+
+                    gameSound.start();
 
                     if(winingPosition[0]==0 && winingPosition[2]==8)
                         gameLine=findViewById(R.id.zerotoeight);
