@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                         winCall="Circle has win!!";
                         Toast.makeText(this, "Circle has win!!", Toast.LENGTH_LONG).show();
                     } else {
-                        winCall="Circle has win!!";
+                        winCall="Cross has win!!";
                         Toast.makeText(this, "Cross has win!!", Toast.LENGTH_LONG).show();
                     }
 
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
             if(value[0]!=2 && value[1]!=2 && value[2]!=2 && value[3]!=2 && value[4]!=2 && value[5]!=2 && value[6]!=2 &&
-                    value[7]!=2 && value[8]!=2){
+                    value[7]!=2 && value[8]!=2 && active){
 
                 winTextView.setText("Draw");
             }
