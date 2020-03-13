@@ -15,6 +15,11 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     MediaPlayer chalkSound,gameSound;
+    int user=0;
+    int[] value={2,2,2,2,2,2,2,2,2};
+    int[][] winingPositions={{0,1,2},{3,4,5},{6,7,8},{0,3,6},{1,4,7},{2,5,8},{0,4,8},{2,4,6}};
+    boolean active=true;
+    ImageView gameLine;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
         chalkSound= MediaPlayer.create(this,R.raw.chalksound);
         gameSound= MediaPlayer.create(this,R.raw.gamesound);
+        gameLine=null;
     }
-
-    int user=0;
-    int[] value={2,2,2,2,2,2,2,2,2};
-    int[][] winingPositions={{0,1,2},{3,4,5},{6,7,8},{0,3,6},{1,4,7},{2,5,8},{0,4,8},{2,4,6}};
-    boolean active=true;
-    ImageView gameLine=null;
 
 
     public void popClick(View view){
@@ -120,13 +120,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void playAgain(View view){
-        Button playAgainButton=(Button)findViewById(R.id.playAgainButton);
-        //playAgainButton.setVisibility(View.INVISIBLE);
+
         TextView winTextView=(TextView)findViewById(R.id.winTextView);
         winTextView.setText("Circle's moves...");
         user=0;
         active=true;
-        gameLine.setVisibility(View.INVISIBLE);
+        if(gameLine!=null)
+           gameLine.setVisibility(View.INVISIBLE);
 
         for (int i = 0; i < value.length; i++) {
             value[i]=2;
